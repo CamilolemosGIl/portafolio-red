@@ -272,39 +272,21 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.video-placeholder {
+.video-player {
   display: grid;
-  min-height: 250px;
-  place-items: center;
-  padding: 22px;
-  background: var(--blue);
-  color: var(--white);
-  text-align: center;
-  border-radius: 8px;
-}
-
-.video-placeholder code {
-  display: block;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  color: #f8d27a;
-}
-
-.video-placeholder a {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 10px 16px;
-  color: var(--blue);
-  background: var(--white);
+  min-height: 250px;
+  padding: 12px;
+  background: #0f1e35;
   border-radius: 8px;
-  font-weight: 850;
-  text-decoration: none;
 }
 
-.video-placeholder a:hover {
-  background: #f8d27a;
+.video-player video {
+  display: block;
+  width: 100%;
+  max-height: 440px;
+  border-radius: 6px;
+  background: #000000;
 }
 
 .resource-visual {
