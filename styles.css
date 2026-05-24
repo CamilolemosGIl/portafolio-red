@@ -413,8 +413,7 @@ h3 {
 
 .slides-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   margin-top: 22px;
   border-left: 6px solid var(--amber);
@@ -430,7 +429,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .slides-actions a {
@@ -446,15 +445,95 @@ h3 {
   text-decoration: none;
 }
 
-.slides-actions a:last-child {
-  color: var(--ink);
-  background: #fff5d6;
-  border: 1px solid var(--amber);
-}
-
 .slides-actions a:hover {
   color: var(--ink);
   background: var(--amber);
+}
+
+.presentation-carousel {
+  display: grid;
+  gap: 14px;
+}
+
+.carousel-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1376 / 768;
+  background: #eef1f5;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.carousel-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--white);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--white);
+  background: rgba(0, 59, 121, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.carousel-control:hover {
+  color: var(--ink);
+  background: var(--amber);
+}
+
+.carousel-control.prev {
+  left: 14px;
+}
+
+.carousel-control.next {
+  right: 14px;
+}
+
+.carousel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.carousel-meta span {
+  color: var(--blue);
+  font-weight: 850;
+}
+
+.carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.carousel-dots button {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  background: #c8d4e2;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-dots button.active {
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(215, 164, 41, 0.24);
 }
 
 .table-wrap {
@@ -522,8 +601,7 @@ footer {
 
   .model-grid,
   .three-cols,
-  .timeline,
-  .slides-card {
+  .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

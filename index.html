@@ -250,13 +250,24 @@
           </article>
         </div>
         <article class="slides-card" aria-labelledby="slides-title">
-          <div>
+          <div class="slides-copy">
             <p class="kicker">Diapositivas de apoyo</p>
             <h3 id="slides-title">MEREC-B Rural Digital Evaluation</h3>
             <p>
               Presentación incluida como soporte del rediseño para documentar la propuesta
               de evaluación digital en contexto rural.
             </p>
+          </div>
+          <div class="presentation-carousel" data-carousel aria-label="Carrusel de diapositivas MEREC-B Rural Digital Evaluation">
+            <div class="carousel-frame">
+              <button class="carousel-control prev" type="button" data-carousel-prev aria-label="Diapositiva anterior">&lsaquo;</button>
+              <img data-carousel-image src="assets/slides/slide-01.png" alt="Diapositiva 1 de 13 de MEREC-B Rural Digital Evaluation">
+              <button class="carousel-control next" type="button" data-carousel-next aria-label="Diapositiva siguiente">&rsaquo;</button>
+            </div>
+            <div class="carousel-meta">
+              <span data-carousel-counter>Diapositiva 1 de 13</span>
+              <div class="carousel-dots" data-carousel-dots aria-label="Seleccionar diapositiva"></div>
+            </div>
           </div>
           <div class="slides-actions">
             <a href="assets/MEREC-B_Rural_Digital_Evaluation%20(2).pptx" download>Descargar presentación PPTX</a>
@@ -396,5 +407,44 @@
     <footer>
       <p>Bajo licencia Creative Commons. Portafolio académico Universidad de Santander UDES.</p>
     </footer>
+    <script>
+      const slidePaths = Array.from({ length: 13 }, (_, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        return `assets/slides/slide-${number}.png`;
+      });
+
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const image = carousel.querySelector("[data-carousel-image]");
+        const counter = carousel.querySelector("[data-carousel-counter]");
+        const dots = carousel.querySelector("[data-carousel-dots]");
+        const previous = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        let current = 0;
+
+        const buttons = slidePaths.map((_, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.setAttribute("aria-label", `Ver diapositiva ${index + 1}`);
+          button.addEventListener("click", () => showSlide(index));
+          dots.append(button);
+          return button;
+        });
+
+        function showSlide(index) {
+          current = (index + slidePaths.length) % slidePaths.length;
+          image.src = slidePaths[current];
+          image.alt = `Diapositiva ${current + 1} de ${slidePaths.length} de MEREC-B Rural Digital Evaluation`;
+          counter.textContent = `Diapositiva ${current + 1} de ${slidePaths.length}`;
+          buttons.forEach((button, buttonIndex) => {
+            button.classList.toggle("active", buttonIndex === current);
+            button.setAttribute("aria-current", buttonIndex === current ? "true" : "false");
+          });
+        }
+
+        previous.addEventListener("click", () => showSlide(current - 1));
+        next.addEventListener("click", () => showSlide(current + 1));
+        showSlide(0);
+      });
+    </script>
   </body>
 </html>
