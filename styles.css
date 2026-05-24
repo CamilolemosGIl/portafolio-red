@@ -414,9 +414,14 @@ h3 {
 .slides-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 20px;
+  gap: 22px;
   margin-top: 22px;
+  padding: clamp(18px, 3vw, 28px);
   border-left: 6px solid var(--amber);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(232, 241, 251, 0.72)),
+    var(--white);
+  box-shadow: 0 22px 55px rgba(0, 38, 84, 0.12);
 }
 
 .slides-card p {
@@ -436,13 +441,14 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 10px 16px;
+  min-height: 48px;
+  padding: 12px 18px;
   color: var(--white);
   background: var(--blue);
   border-radius: 8px;
   font-weight: 850;
   text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0, 59, 121, 0.18);
 }
 
 .slides-actions a:hover {
@@ -452,16 +458,18 @@ h3 {
 
 .presentation-carousel {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .carousel-frame {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1376 / 768;
-  background: #eef1f5;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  padding: clamp(8px, 1.5vw, 14px);
+  background: linear-gradient(135deg, #15364f, #005aa9);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0, 38, 84, 0.18);
 }
 
 .carousel-frame img {
@@ -470,36 +478,41 @@ h3 {
   height: 100%;
   object-fit: contain;
   background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
 .carousel-control {
   position: absolute;
   top: 50%;
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 56px;
+  height: 56px;
   place-items: center;
   color: var(--white);
-  background: rgba(0, 59, 121, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(19, 35, 63, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.68);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2.75rem;
   line-height: 1;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
   transform: translateY(-50%);
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .carousel-control:hover {
   color: var(--ink);
   background: var(--amber);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .carousel-control.prev {
-  left: 14px;
+  left: clamp(16px, 2vw, 26px);
 }
 
 .carousel-control.next {
-  right: 14px;
+  right: clamp(16px, 2vw, 26px);
 }
 
 .carousel-meta {
@@ -507,7 +520,11 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .carousel-meta span {
@@ -518,22 +535,23 @@ h3 {
 .carousel-dots {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 9px;
 }
 
 .carousel-dots button {
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   padding: 0;
-  background: #c8d4e2;
-  border: 0;
+  background: #b8c7d8;
+  border: 2px solid var(--white);
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 2px 7px rgba(0, 38, 84, 0.16);
 }
 
 .carousel-dots button.active {
   background: var(--amber);
-  box-shadow: 0 0 0 3px rgba(215, 164, 41, 0.24);
+  box-shadow: 0 0 0 4px rgba(215, 164, 41, 0.24);
 }
 
 .table-wrap {
@@ -640,6 +658,25 @@ footer {
 
   .slides-actions a {
     flex: 1 1 180px;
+  }
+
+  .carousel-control {
+    width: 46px;
+    height: 46px;
+    font-size: 2.25rem;
+  }
+
+  .carousel-control.prev {
+    left: 10px;
+  }
+
+  .carousel-control.next {
+    right: 10px;
+  }
+
+  .carousel-meta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .red-card iframe {
